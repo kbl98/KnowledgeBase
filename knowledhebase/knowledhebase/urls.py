@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('startpage/',StartpageView.as_view(),name='startpage'),
     path('add/',AddView.as_view()),
-     path('legal/',LegalView.as_view()),
+    path('legal/',LegalView.as_view()),
+    path('',StartpageView.as_view(),name='startpage'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

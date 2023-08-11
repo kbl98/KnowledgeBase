@@ -28,8 +28,24 @@ class StartpageTests(TestCase):
         response=self.client.get('/startpage/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    
+    def test_search_test(self):
+        self.setup()
+        data='test'
+        response=self.client.get('/startpage/?search_terms='+data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        articles_count = len(response.context['articles'])
+        self.assertTrue(articles_count > 0)
 
+
+    def test_wrong_search_test(self):
+        self.setup()
+        data='rufus'
+        response=self.client.get('/startpage/?search_terms='+data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        articles_count = len(response.context['articles'])
+        self.assertTrue(articles_count == 0)
+    
+    """
     def test_search_test(self):
         self.setup()
         array=['tes',]
@@ -49,7 +65,7 @@ class StartpageTests(TestCase):
         encoded_html=response.content.decode('utf-8')
         decoded_html = html.unescape(encoded_html)
         self.assertNotIn('Karl', decoded_html)
-
+    """
 
 class AddPageTests(TestCase):
     """

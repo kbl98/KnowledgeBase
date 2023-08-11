@@ -18,7 +18,16 @@ class StartpageView(APIView):
         """
         Methode, that gets all articles from database and renders them at startindex.html
         """
+        search_terms = request.GET.get('search_terms', '').split(',')
         queryset=Article.objects.all()
+        for term in search_terms:
+            lowercase_term = term.lower()
+            
+            queryset = queryset.filter(
+                Q(title__icontains=lowercase_term) |
+                Q(author__icontains=lowercase_term) |
+                Q(text__icontains=lowercase_term)
+            )
         serializer=ArticleSerializer(queryset,many=True)
         articles=serializer.data
         return render(request,'start/startindex.html',{'articles':articles})

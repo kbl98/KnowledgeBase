@@ -42,32 +42,10 @@ function getFormdata() {
     let body=JSON.stringify({'search_terms':inputArray})
     console.log(body)
     let token = "{{ csrf_token }}";
-    let response= await fetch("/startpage/", {
-      method: "POST",
-      headers: {
-         "X-CSRFToken": token,
-         "Content-Type":"application/json",
-         "Accept":"application/json"
+    let searchTerms = inputArray.join(',');
+    let url = `/startpage/?search_terms=${searchTerms}`;
+    window.location.href = url;
 
-         
-    },
-      body: body
-    });
-    if (response.ok) {
-      
-      const responseData = await response.json();
-      console.log(responseData)
-      const articlesContainer = document.getElementById('allArticles');
-      articlesContainer.innerHTML = responseData;
-  } else {
-      console.error("Fehler bei der Anfrage:", response.status);
-  }
-   
-
-    
-    
-
-   
   }
   }
  
