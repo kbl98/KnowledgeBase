@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <script>
+        let token= "{{ csrf_token }}";
+    </script>
+    <script src="../../static/js/script.js"></script>
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="head-main">
+        <div class="logo"><img class="logo-img"src="../../static/img/hut.png">KnowledgeBase</div>
+       
+    </div>
+    <form class="all-articles" method="post" onsubmit="saveArticle();return false" >
+        <div class="form-cont">
+            {% csrf_token %}
+            <input class="input" id="title" placeholder="Titel" required>
+            <textarea class="input" name="textfield" id="textfield" placeholder="Text" required></textarea>
+            <input class="input" id="author" placeholder="Autor" required>
+            <button type="submit" click="saveArticle()"class="button">Speichern</button>
+        </div>
+        
+    </form>
+</body>
+</html>

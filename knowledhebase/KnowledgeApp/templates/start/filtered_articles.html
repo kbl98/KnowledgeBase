@@ -1,0 +1,9 @@
+{% for article in articles %}
+        <div class="article-cont">
+            <h2 class="article-heading">{{article.title}}</h2>
+            <h3 class="article-author">{{article.author}}</h3>
+            <p>{{article.text}}</p>
+            <span>erstellt: {{article.created_at}}</span>
+        </div>
+        {%endfor%}
+        <a href="../add/" class="button">Hinzufügen</a>
