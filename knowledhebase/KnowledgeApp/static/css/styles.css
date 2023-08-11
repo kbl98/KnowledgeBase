@@ -39,9 +39,6 @@ input{
 
 
 .logo{
-    position:absolute;
-    top:24px;
-    left:32px;
     color:grey;
     font-size: 20px;
     display: flex;
@@ -138,4 +135,18 @@ input{
     height:150px;
     overflow: auto;
     hyphens: auto;
+}
+
+.headlink{
+    text-decoration: none;
+    color:grey;
+    cursor: pointer;
+}
+
+.top-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    padding: 24px;
 }

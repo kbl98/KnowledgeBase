@@ -44,7 +44,7 @@ class StartpageView(APIView):
         rendered_template = render_to_string('start/filtered_articles.html', {'articles': articles})
 
         
-        return JsonResponse(rendered_template, safe=False)
+        return JsonResponse(rendered_template, safe=False,)
         
     
     
@@ -64,4 +64,11 @@ class AddView(APIView):
             new_article = serializer.save()
             return Response(status=status.HTTP_201_CREATED)
             
-        return render({'Errors':serializer.errors},'add/addindex.html')
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+class LegalView(APIView):
+    def get(self,request):
+        """
+        Render legal-template, to see legalnotice
+        """
+        return render(request,'legalnotice/legalindex.html')

@@ -13,6 +13,9 @@ async function saveArticle(){
     });
        if (response.status==201){
         window.location.href = '/startpage/';}
+       else{
+        alert("An Error occured");
+        }
     } catch (error) {
         alert("An Error occured");
       }
@@ -51,7 +54,9 @@ function getFormdata() {
       body: body
     });
     if (response.ok) {
+      
       const responseData = await response.json();
+      console.log(responseData)
       const articlesContainer = document.getElementById('allArticles');
       articlesContainer.innerHTML = responseData;
   } else {

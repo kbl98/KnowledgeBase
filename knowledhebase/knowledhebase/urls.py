@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from KnowledgeApp.views import StartpageView ,AddView
+from KnowledgeApp.views import LegalView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,4 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('startpage/',StartpageView.as_view(),name='startpage'),
     path('add/',AddView.as_view()),
+     path('legal/',LegalView.as_view()),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
